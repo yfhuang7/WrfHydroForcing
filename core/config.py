@@ -169,16 +169,6 @@ class ConfigOptions:
                 err_handler.err_out_screen('Unable to locate forcing directory: ' +
                                            self.input_force_dirs[dirTmp])
 
-        # Read in the mandatory enforcement options for input forcings.
-        try:
-            self.input_force_mandatory = json.loads(config['Input']['InputMandatory'])
-        except KeyError:
-            err_handler.err_out_screen('Unable to locate InputMandatory under Input section in configuration file.')
-        except configparser.NoOptionError:
-            err_handler.err_out_screen('Unable to locate InputMandatory under Input section in configuration file.')
-        except json.decoder.JSONDecodeError:
-            err_handler.err_out_screen('Improper InputMandatory option specified in configuration file')
-
         # Process input forcing enforcement options
         try:
             self.input_force_mandatory = json.loads(config['Input']['InputMandatory'])
